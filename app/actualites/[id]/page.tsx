@@ -53,7 +53,7 @@ export async function generateStaticParams() {
   return rows.map((row) => ({ id: String(row.id) }));
 }
 
-export const dynamicParams = false;
+export const dynamic = 'force-static';
 
 export default async function ActualitePage({
   params,
