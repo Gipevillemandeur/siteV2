@@ -71,7 +71,7 @@ export default function Home() {
                 {latestNews.map((item) => (
                   <Link
                     key={item.id}
-                    href={`/actualites/${item.id}`}
+                    href={`/actualites/detail?id=${item.id}`}
                     className="block"
                   >
                     <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">

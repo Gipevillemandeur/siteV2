@@ -99,7 +99,7 @@ export default function ActualitesPage() {
           {filteredNews.map((item) => (
             <Link
               key={item.id}
-              href={`/actualites/${item.id}`}
+              href={`/actualites/detail?id=${item.id}`}
               className="block"
             >
               <article className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition border-l-4 border-gold">

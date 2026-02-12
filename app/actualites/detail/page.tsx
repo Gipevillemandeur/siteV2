@@ -1,30 +1,12 @@
-import Image from 'next/image';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import { FaArrowLeft, FaCalendar, FaUser } from 'react-icons/fa';
 import type { NewsRow } from '@/lib/types';
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-async function fetchSupabase<T>(path: string): Promise<T> {
-  if (!supabaseUrl || !supabaseAnonKey) {
-    return [] as unknown as T;
-  }
-
-  const res = await fetch(`${supabaseUrl}/rest/v1/${path}`, {
-    headers: {
-      apikey: supabaseAnonKey,
-      Authorization: `Bearer ${supabaseAnonKey}`,
-    },
-  });
-
-  if (!res.ok) {
-    return [] as unknown as T;
-  }
-
-  return res.json() as Promise<T>;
-}
 
 function driveShareToDirect(link: string): string {
   const match = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
@@ -34,10 +16,10 @@ function driveShareToDirect(link: string): string {
   return link;
 }
 
-// Transformer l'image pour l'afficher complète dans un conteneur raisonnable
+// Transformer l'image pour l'afficher complete dans un conteneur raisonnable
 function getContainedImage(imageUrl: string): string {
   if (imageUrl.includes('cloudinary.com') && imageUrl.includes('/upload/')) {
-    // Version carrée 672x672 sans padding pour laisser le fond du conteneur visible
+    // Version carree 672x672 sans padding pour laisser le fond du conteneur visible
     return imageUrl
       .replace(/\/upload\/w_\d+,h_\d+,c_fill,q_auto\//, '/upload/w_672,h_672,c_fit,q_auto/')
       .replace(/\/upload\/f_jpg,pg_1,w_\d+,h_\d+,c_fill,q_auto\//, '/upload/f_jpg,pg_1,w_672,h_672,c_fit,q_auto/')
@@ -47,40 +29,56 @@ function getContainedImage(imageUrl: string): string {
   return imageUrl;
 }
 
-export async function generateStaticParams(): Promise<Array<{ id: string }>> {
-  if (!supabaseUrl || !supabaseAnonKey) {
-    return [];
+export default function ActualiteDetailPage() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
+  const [article, setArticle] = useState<NewsRow | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchArticle() {
+      if (!id) {
+        setLoading(false);
+        return;
+      }
+
+      const { data } = await supabase
+        .from('news')
+        .select('*')
+        .eq('id', id)
+        .single();
+
+      setArticle((data as NewsRow) || null);
+      setLoading(false);
+    }
+
+    fetchArticle();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-amber-50 to-white">
+        <div className="max-w-3xl mx-auto px-4 py-12">
+          <p className="text-gray-600">Chargement...</p>
+        </div>
+      </div>
+    );
   }
 
-  const res = await fetch(`${supabaseUrl}/rest/v1/news?select=id`, {
-    headers: {
-      apikey: supabaseAnonKey,
-      Authorization: `Bearer ${supabaseAnonKey}`,
-    },
-  });
-
-  if (!res.ok) {
-    return [];
-  }
-
-  const rows = (await res.json()) as Array<{ id: string | number }>;
-  return rows.map((row) => ({ id: String(row.id) }));
-}
-
-export const dynamicParams = false;
-
-export default async function ActualitePage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
-
-  const rows = await fetchSupabase<NewsRow[]>(`news?id=eq.${encodeURIComponent(id)}&select=*`);
-  const article = rows?.[0] ?? null;
-
-  if (!article) {
-    notFound();
+  if (!id || !article) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-amber-50 to-white">
+        <div className="max-w-3xl mx-auto px-4 py-12">
+          <Link
+            href="/actualites"
+            className="inline-flex items-center gap-2 text-maroon hover:text-gold transition mb-8"
+          >
+            <FaArrowLeft /> Retour aux actualites
+          </Link>
+          <p className="text-gray-600">Actualite introuvable.</p>
+        </div>
+      </div>
+    );
   }
 
   return (
