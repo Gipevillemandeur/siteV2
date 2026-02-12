@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 25s linear infinite;
+  display: inline-block;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== SCROLL DOUX ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== BODY ===== */
+body {
+  background-color: #fffcf5;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== SELECTION TEXTE ===== */
+::selection {
+  background: #f59e0b;
+  color: white;
+}
+
+/* ===== GLASS EFFECT ===== */
+.glass-morphism {
+  background: rgba(255, 252, 245, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(125, 32, 26, 0.1);
+}
+
+/* ===== COULEURS THEME ===== */
+.text-maroon {
+  color: #7d201a;
+}
+
+.bg-maroon {
+  background-color: #7d201a;
+}
+
+.text-gold {
+  color: #f59e0b;
+}
+
+.bg-gold {
+  background-color: #f59e0b;
+}
+
+/* ===== LIENS ===== */
+a {
+  color: #7d201a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #f59e0b;
+}
+
+/* ===== TITRES ===== */
+h1, h2, h3, h4, h5, h6 {
+  color: #7d201a;
+}
+
+/* ===== BOUTONS GENERIQUES (OPTIONNELS) ===== */
+.btn-primary {
+  background-color: #7d201a;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #f59e0b;
+  color: #7d201a;
+}
+
+.btn-secondary {
+  background-color: #f59e0b;
+  color: #7d201a;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #7d201a;
+  color: white;
+}

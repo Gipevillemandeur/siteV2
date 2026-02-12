@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://gipevillemandeur.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+Request-rate: 30/1m

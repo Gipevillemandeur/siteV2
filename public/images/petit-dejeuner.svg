@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none">
+  <rect width="100%" height="100%" fill="#fff7ed"/>
+  <rect x="60" y="60" width="1080" height="680" rx="16" fill="#7d201a" opacity="0.08"/>
+  <g transform="translate(120,160)">
+    <rect width="960" height="480" rx="12" fill="#fff" stroke="#f59e0b" stroke-width="8" />
+    <text x="480" y="240" font-size="48" text-anchor="middle" fill="#7d201a" font-family="Arial, Helvetica, sans-serif">Petit déjeuner convivial</text>
+  </g>
+</svg>

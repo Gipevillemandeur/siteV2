@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <!-- Outer circle blue -->
+  <circle cx="100" cy="100" r="95" fill="#003DA5" stroke="#001F5C" stroke-width="2"/>
+  
+  <!-- Inner circle lighter blue -->
+  <circle cx="100" cy="100" r="88" fill="#0052CC"/>
+  
+  <!-- Center circle for logo area -->
+  <circle cx="100" cy="80" r="35" fill="white"/>
+  
+  <!-- Stylized people/book icon -->
+  <circle cx="85" cy="70" r="12" fill="#D84315"/>
+  <circle cx="100" cy="65" r="10" fill="#FFC107"/>
+  <circle cx="115" cy="70" r="10" fill="#F5DEB3"/>
+  
+  <!-- Book shape -->
+  <path d="M 80 85 L 80 95 L 120 95 L 120 85 Q 100 90 80 85" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <path d="M 82 87 L 82 93 L 118 93 L 118 87" fill="#D2B48C"/>
+  
+  <!-- Text: GIPE -->
+  <text x="100" y="135" font-size="24" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial, sans-serif">GIPE</text>
+  
+  <!-- Bottom text: Villemandeur -->
+  <text x="100" y="160" font-size="12" fill="#FFC107" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold">Villemandeur</text>
+</svg>
