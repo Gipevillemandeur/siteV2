@@ -33,12 +33,14 @@ export async function generateStaticParams() {
   return rows.map((row) => ({ id: String(row.id) }));
 }
 
+export const dynamicParams = false;
+
 export default async function ActualitePage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = await params;
+  const { id } = params;
 
   const { data } = await supabase
     .from('news')
