@@ -38,9 +38,9 @@ export const dynamicParams = false;
 export default async function ActualitePage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { id } = params;
+  const { id } = await params;
 
   const { data } = await supabase
     .from('news')
