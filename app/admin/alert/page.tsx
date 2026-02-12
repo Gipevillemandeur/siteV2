@@ -69,7 +69,7 @@ export default function AdminAlertPage() {
         <LogoutButton />
       </div>
 
-      <h1 className="text-3xl font-bold text-maroon mb-6">Bandeau d'alerte</h1>
+      <h1 className="text-3xl font-bold text-maroon mb-6">Bandeau d&apos;alerte</h1>
 
       <div className="space-y-6">
 

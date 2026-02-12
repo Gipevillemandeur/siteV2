@@ -12,21 +12,22 @@ export default function AdminPage() {
   const router = useRouter();
 
   useEffect(() => {
-    checkAuth();
-  }, []);
+    async function checkAuth() {
+      const { data: { session } } = await supabase.auth.getSession();
 
-  async function checkAuth() {
-    const { data: { session } } = await supabase.auth.getSession();
-    
-    if (!session) {
-      router.push('/admin/login');
-      return;
+      if (!session) {
+        router.push('/admin/login');
+        setIsLoading(false);
+        return;
+      }
+
+      setIsAuthenticated(true);
+      setUserEmail(session.user.email || '');
+      setIsLoading(false);
     }
 
-    setIsAuthenticated(true);
-    setUserEmail(session.user.email || '');
-    setIsLoading(false);
-  }
+    checkAuth();
+  }, [router]);
 
   async function handleLogout() {
     await supabase.auth.signOut();

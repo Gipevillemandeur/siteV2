@@ -11,6 +11,25 @@ export default function AdminProtection({ children }: { children: React.ReactNod
   const pathname = usePathname();
 
   useEffect(() => {
+    async function checkAuth() {
+      // Si on est sur la page de login, pas besoin de verifier
+      if (pathname === '/admin/login') {
+        setIsLoading(false);
+        return;
+      }
+
+      const { data: { session } } = await supabase.auth.getSession();
+
+      if (!session) {
+        router.push('/admin/login');
+        setIsLoading(false);
+        return;
+      }
+
+      setIsAuthenticated(true);
+      setIsLoading(false);
+    }
+
     checkAuth();
 
     // Écouter les changements d'auth
@@ -26,25 +45,6 @@ export default function AdminProtection({ children }: { children: React.ReactNod
     };
   }, [router, pathname]);
 
-  async function checkAuth() {
-    // Si on est sur la page de login, pas besoin de vérifier
-    if (pathname === '/admin/login') {
-      setIsLoading(false);
-      return;
-    }
-
-    const { data: { session } } = await supabase.auth.getSession();
-    
-    if (!session) {
-      router.push('/admin/login');
-      setIsLoading(false);
-      return;
-    }
-
-    setIsAuthenticated(true);
-    setIsLoading(false);
-  }
-
   // Page de login : afficher directement
   if (pathname === '/admin/login') {
     return <>{children}</>;
@@ -55,7 +55,7 @@ export default function AdminProtection({ children }: { children: React.ReactNod
       <div className="min-h-screen flex items-center justify-center bg-cream">
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-maroon mb-4"></div>
-          <p className="text-gray-600">Vérification de l'authentification...</p>
+          <p className="text-gray-600">Vérification de l&apos;authentification...</p>
         </div>
       </div>
     );
