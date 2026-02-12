@@ -47,13 +47,13 @@ function getContainedImage(imageUrl: string): string {
   return imageUrl;
 }
 
-export async function generateStaticParams() {
+export const generateStaticParams = async () => {
   const rows = await fetchSupabase<Array<{ id: string | number }>>('news?select=id');
 
   return rows.map((row) => ({ id: String(row.id) }));
-}
+};
 
-export const dynamic = 'force-static';
+export const dynamicParams = false;
 
 export default async function ActualitePage({
   params,
