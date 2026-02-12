@@ -47,11 +47,11 @@ function getContainedImage(imageUrl: string): string {
   return imageUrl;
 }
 
-export const generateStaticParams = async () => {
+export async function generateStaticParams(): Promise<Array<{ id: string }>> {
   const rows = await fetchSupabase<Array<{ id: string | number }>>('news?select=id');
 
   return rows.map((row) => ({ id: String(row.id) }));
-};
+}
 
 export const dynamicParams = false;
 
