@@ -37,7 +37,7 @@ export default function Header() {
         <nav className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2 font-bold text-xl hover:text-gold transition">
             <Image
-              src="/images/logogipe.png"
+              src="/siteV2/images/logogipe.png"
               alt="Logo GIPE"
               width={48}
               height={48}
