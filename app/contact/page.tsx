@@ -90,7 +90,7 @@ export default function ContactPage() {
               <div className="flex gap-6 mt-6">
                 <a href={settings.facebook} target="_blank" rel="noopener noreferrer">
                   <Image
-                    src="/siteV2/images/logogipefacebook.png"
+                    src="/images/logogipefacebook.png"
                     alt="Facebook GIPE"
                     width={48}
                     height={48}
@@ -99,7 +99,7 @@ export default function ContactPage() {
                 </a>
                 <a href={settings.instagram} target="_blank" rel="noopener noreferrer">
                   <Image
-                    src="/siteV2/images/logogipeinsta.png"
+                    src="/images/logogipeinsta.png"
                     alt="Instagram GIPE"
                     width={48}
                     height={48}
