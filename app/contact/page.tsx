@@ -52,6 +52,7 @@ export default function ContactPage() {
     if (response.ok) {
       setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setStatus('idle'), 3000); // Masquer le message après 3s
     } else {
       setStatus('error');
     }
@@ -115,17 +116,17 @@ export default function ContactPage() {
           <div>
             <form onSubmit={handleSubmit} className="space-y-4">
 
-              <input name="name" placeholder="Nom" onChange={handleChange} className="w-full border p-2" required />
-              <input name="email" type="email" placeholder="Email" onChange={handleChange} className="w-full border p-2" required />
+              <input name="name" value={formData.name} placeholder="Nom" onChange={handleChange} className="w-full border p-2" required />
+              <input name="email" value={formData.email} type="email" placeholder="Email" onChange={handleChange} className="w-full border p-2" required />
 
-              <select name="subject" onChange={handleChange} className="w-full border p-2" required>
+              <select name="subject" value={formData.subject} onChange={handleChange} className="w-full border p-2" required>
                 <option value="">Sujet</option>
                 <option>Adhésion</option>
                 <option>Question</option>
                 <option>Événement</option>
               </select>
 
-              <textarea name="message" placeholder="Message" onChange={handleChange} className="w-full border p-2" required />
+              <textarea name="message" value={formData.message} placeholder="Message" onChange={handleChange} className="w-full border p-2" required />
 
               <button className="bg-maroon text-white px-4 py-2 rounded w-full">
                 Envoyer
