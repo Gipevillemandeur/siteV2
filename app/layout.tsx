@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'GIPE Villemandeur',
     images: [
       {
-        url: '/images/logogipe.png',
+        url: '/siteV2/images/logogipe.png',
         width: 400,
         height: 300,
         alt: 'Logo GIPE Villemandeur',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'GIPE Villemandeur',
     description: 'Agir ensemble pour nos enfants',
-    images: ['/images/logo.svg'],
+    images: ['/siteV2/images/logo.svg'],
   },
   robots: 'index, follow',
   applicationName: 'GIPE Villemandeur',
@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        <link rel="icon" href="/images/logo.svg" />
+        <link rel="icon" href="/siteV2/images/logo.svg" />
         <meta name="theme-color" content="#7d201a" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="UTF-8" />

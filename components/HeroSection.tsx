@@ -6,7 +6,7 @@ export default function HeroSection() {
     <section
       className="relative bg-cover bg-center text-white py-28 mt-8 rounded-2xl overflow-hidden"
       style={{
-        backgroundImage: "url('/images/college.png')",
+        backgroundImage: "url('/siteV2/images/college.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
