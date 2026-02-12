@@ -1,9 +1,30 @@
-import { supabase } from '@/lib/supabase';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FaArrowLeft, FaCalendar, FaUser } from 'react-icons/fa';
 import type { NewsRow } from '@/lib/types';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+async function fetchSupabase<T>(path: string): Promise<T> {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return [] as unknown as T;
+  }
+
+  const res = await fetch(`${supabaseUrl}/rest/v1/${path}`, {
+    headers: {
+      apikey: supabaseAnonKey,
+      Authorization: `Bearer ${supabaseAnonKey}`,
+    },
+  });
+
+  if (!res.ok) {
+    return [] as unknown as T;
+  }
+
+  return res.json() as Promise<T>;
+}
 
 function driveShareToDirect(link: string): string {
   const match = link.match(/\/d\/([a-zA-Z0-9_-]+)/);
@@ -27,8 +48,7 @@ function getContainedImage(imageUrl: string): string {
 }
 
 export async function generateStaticParams() {
-  const { data } = await supabase.from('news').select('id');
-  const rows = (data ?? []) as Array<{ id: string | number }>;
+  const rows = await fetchSupabase<Array<{ id: string | number }>>('news?select=id');
 
   return rows.map((row) => ({ id: String(row.id) }));
 }
@@ -42,13 +62,8 @@ export default async function ActualitePage({
 }) {
   const { id } = await params;
 
-  const { data } = await supabase
-    .from('news')
-    .select('*')
-    .eq('id', id)
-    .single();
-
-  const article = data as NewsRow | null;
+  const rows = await fetchSupabase<NewsRow[]>(`news?id=eq.${encodeURIComponent(id)}&select=*`);
+  const article = rows?.[0] ?? null;
 
   if (!article) {
     notFound();
