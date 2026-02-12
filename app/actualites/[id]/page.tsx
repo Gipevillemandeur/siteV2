@@ -48,8 +48,22 @@ function getContainedImage(imageUrl: string): string {
 }
 
 export async function generateStaticParams(): Promise<Array<{ id: string }>> {
-  const rows = await fetchSupabase<Array<{ id: string | number }>>('news?select=id');
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return [];
+  }
 
+  const res = await fetch(`${supabaseUrl}/rest/v1/news?select=id`, {
+    headers: {
+      apikey: supabaseAnonKey,
+      Authorization: `Bearer ${supabaseAnonKey}`,
+    },
+  });
+
+  if (!res.ok) {
+    return [];
+  }
+
+  const rows = (await res.json()) as Array<{ id: string | number }>;
   return rows.map((row) => ({ id: String(row.id) }));
 }
 
