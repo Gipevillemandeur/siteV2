@@ -12,6 +12,27 @@ export default function Header() {
   const [alertMessage, setAlertMessage] = useState('');
   const [alertEnabled, setAlertEnabled] = useState(false);
   const [alertType, setAlertType] = useState('info');
+  const urlPattern = /(https?:\/\/[^\s]+)/g;
+
+  function renderAlertMessage(text: string, keyPrefix: string) {
+    const parts = text.split(urlPattern);
+
+    return parts.map((part, index) =>
+      part.startsWith('http://') || part.startsWith('https://') ? (
+        <a
+          key={`${keyPrefix}-url-${index}`}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2"
+        >
+          {part}
+        </a>
+      ) : (
+        <span key={`${keyPrefix}-text-${index}`}>{part}</span>
+      )
+    );
+  }
 
   useEffect(() => {
     async function fetchAlert() {
@@ -128,7 +149,7 @@ export default function Header() {
             {[...Array(10)].map((_, i) => (
               <span key={i} className="inline-block px-8">
                 {alertType === 'urgent' ? '⚠️ ' : 'ℹ️ '}
-                {alertMessage}
+                {renderAlertMessage(alertMessage, `alert-${i}`)}
               </span>
             ))}
           </div>
