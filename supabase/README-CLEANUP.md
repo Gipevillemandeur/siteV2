@@ -13,8 +13,8 @@ Le nettoyage automatique des événements passés est configuré via **Make.com*
 - **Méthode** : DELETE
 - **Paramètre** : `date=lt.{{formatDate(now; "YYYY-MM-DD")}}`
 - **Headers** :
-  - `apikey: sb_publishable_yn2FoyIuHerZrucVZwq2mw_ehz76rwa`
-  - `Authorization: Bearer sb_publishable_yn2FoyIuHerZrucVZwq2mw_ehz76rwa`
+  - `apikey: VOTRE_CLE_PUBLIQUE`
+  - `Authorization: Bearer VOTRE_CLE_PUBLIQUE`
   - `Prefer: return=representation`
 - **Horaire** : Tous les jours à 0h01 (Europe/Paris)
 
