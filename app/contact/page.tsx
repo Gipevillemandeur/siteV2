@@ -69,7 +69,7 @@ export default function ContactPage() {
         <h1 className="text-4xl font-bold text-maroon mb-2">Nous Contacter</h1>
         <div className="w-12 h-1 bg-gold mb-10 rounded"></div>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid md:grid-cols-2 gap-10 items-start">
 
           {/* INFOS */}
           <div className="bg-maroon text-white rounded-3xl p-8 flex flex-col gap-8">
