@@ -94,6 +94,11 @@ export default function Header() {
                 Contact
               </Link>
             </li>
+            <li>
+              <Link href="/adhesion" className="bg-gold text-maroon px-4 py-2 rounded-lg font-bold hover:bg-amber-400 transition">
+                Adhérer
+              </Link>
+            </li>
           </ul>
 
           {/* Mobile Menu Button */}
@@ -131,6 +136,11 @@ export default function Header() {
             <li>
               <Link href="/contact" onClick={() => setIsOpen(false)} className="block hover:text-gold transition">
                 Contact
+              </Link>
+            </li>
+            <li>
+              <Link href="/adhesion" onClick={() => setIsOpen(false)} className="block font-bold text-gold hover:text-amber-300 transition">
+                Adhérer
               </Link>
             </li>
           </ul>
