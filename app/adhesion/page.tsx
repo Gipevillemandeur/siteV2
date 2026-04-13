@@ -26,12 +26,12 @@ export default function AdhesionPage() {
             <div className="flex flex-col items-center text-center gap-3">
               <FaUsers className="text-gold text-3xl" />
               <p className="font-semibold text-maroon">Rejoindre une communauté</p>
-              <p className="text-gray-600 text-sm">Participez activement à la vie du collège aux côtés d'autres parents.</p>
+              <p className="text-gray-600 text-sm">Participez activement à la vie du collège aux côtés des autres parents.</p>
             </div>
             <div className="flex flex-col items-center text-center gap-3">
               <FaCheckCircle className="text-gold text-3xl" />
               <p className="font-semibold text-maroon">Soutenir nos actions</p>
-              <p className="text-gray-600 text-sm">Votre adhésion nous permet d'organiser des événements pour les élèves.</p>
+              <p className="text-gray-600 text-sm">Votre adhésion nous permet d&apos;organiser des événements pour les élèves.</p>
             </div>
             <div className="flex flex-col items-center text-center gap-3">
               <FaHeart className="text-gold text-3xl" />
@@ -48,11 +48,9 @@ export default function AdhesionPage() {
           </h2>
           <iframe
             id="haWidget"
-            allowTransparency={true}
-            scrolling="auto"
             src="https://www.helloasso.com/associations/groupement-independant-de-parents-d-eleves-du-college-de-villemandeur/adhesions/adhesion-au-gipe-du-college/widget"
             style={{ width: '100%', height: '750px', border: 'none' }}
-          />
+          ></iframe>
         </div>
 
       </div>
