@@ -48,7 +48,7 @@ export default function AdhesionPage() {
           </h2>
           <iframe
             id="haWidget"
-            src="https://www.helloasso.com/associations/groupement-independant-de-parents-d-eleves-du-college-de-villemandeur/adhesions/adhesion-gipe-villemandeur/widget-bouton"
+            src="https://www.helloasso.com/associations/groupement-independant-de-parents-d-eleves-du-college-de-villemandeur/adhesions/adhesion-gipe-villemandeur/widget-vignette"
             style={{ width: '100%', height: '750px', border: 'none' }}
           ></iframe>
         </div>
