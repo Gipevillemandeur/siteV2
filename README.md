@@ -7,7 +7,7 @@ Site moderne et performant du Groupement Indépendant de Parents d'Élèves du C
 - ✨ **Next.js 15** - Framework React avec SSR/SSG et SEO natif
 - 🎨 **Tailwind CSS** - Design moderne et responsive
 - 🗄️ **Supabase** - Backend et base de données en temps réel
-- 📰 **Interface Admin** - Gestion du contenu via tableau de bord
+- 🧭 **Administration centralisée** - Gestion du contenu depuis le GIPE Dashboard
 - 📅 **Calendrier dynamique** - Filtrage des événements par mois
 - 📧 **Formulaire de contact** - Intégration Formspree
 - 📱 **Mobile-first** - Entièrement responsive
