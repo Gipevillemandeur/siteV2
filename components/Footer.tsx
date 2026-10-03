@@ -106,10 +106,7 @@ export default function Footer() {
             <Link href="/confidentialite" className="hover:text-gold transition">
               Politique de confidentialité
             </Link>
-            <Link href="/admin" className="block text-[10px] opacity-30 hover:opacity-100 transition mt-2">
-              Admin
-            </Link>
-          </div>
+           </div>
         </div>
 
       </div>
