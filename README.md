@@ -39,7 +39,7 @@ Créez un fichier `.env.local` à la racine du projet :
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://votre-projet.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=votre-cle-anonyme
-NEXT_PUBLIC_ADMIN_PASS=VotreMotDePasse123
+
 ```
 
 Obtenez vos clés depuis [supabase.com](https://supabase.com) après création d'un projet.
@@ -61,7 +61,6 @@ site2gipe/
 │   ├── agenda/             # Événements
 │   ├── documents/          # Documents téléchargeables
 │   ├── contact/            # Formulaire de contact
-│   ├── admin/              # Interface d'administration
 │   ├── layout.tsx          # Layout global
 │   └── globals.css         # Styles globaux
 ├── components/             # Composants réutilisables
@@ -86,12 +85,6 @@ site2gipe/
 ## 📝 Gestion du contenu
 
 Le contenu est géré via **Supabase** et l'interface d'administration.
-
-### Accès à l'interface Admin
-
-1. Allez sur `/admin` sur votre site
-2. Entrez le mot de passe défini dans `.env.local` (`NEXT_PUBLIC_ADMIN_PASS`)
-3. Gérez les actualités, événements, documents et paramètres
 
 ### Tables Supabase
 
